@@ -16,7 +16,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 
 # Loading the dataset.
-@st.cache_data()
+@st.cache()
 def load_data():
     file_path = "glass-types.csv"
     df = pd.read_csv(file_path, header = None)
@@ -42,7 +42,7 @@ y = glass_df['GlassType']
 # Spliting the data into training and testing sets.
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = 42)
 features = ['RI','Na','Mg','Al','Si','K','Ca','Ba','Fe']
-@st.cache_data()
+@st.cache()
 def prediction(_model,features):
   glass_type = _model.predict([features])
   if glass_type[0] == 1:
